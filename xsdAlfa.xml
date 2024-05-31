@@ -1,0 +1,416 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CertificadoDeposito">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="EmisionCertificado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AgdEmisor">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RfcAgd" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Requerido para todos los certificados, para expresar el RFC del Almacén General de Depósito que emite el certificado. El RFC podrá contener 12 caracteres.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:whiteSpace value="collapse"/>
+                          <xs:pattern value="[A-ZÑ&]{3}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Agd" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Requerido para todos los certificados, para expresar el nombre del Almacén General de Depósito que emite el certificado. El nombre podrá contener 128 caracteres.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="5"/>
+                          <xs:maxLength value="128"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="RepresentanteLegalAgd">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Rfc" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>Requerido para todos los certificados, para expresar el RFC del Representante Legal del Almacén General de Depósito que emite el certificado.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{4}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Nombre" type="xs:string"/>
+                          <xs:element name="PrimerApellido" type="xs:string"/>
+                          <xs:element name="SegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IdentificacionCertificado">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TituloDeCredito" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Expresa el tipo de título de crédito que se emite en medios electrónicos.
+            </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="3"/>
+                          <xs:maxLength value="64"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="TipoCertificado" type="xs:string"/>
+                    <xs:element name="EstatusCertificado" type="xs:string"/>
+                    <xs:element name="Folio" type="xs:string"/>
+                    <xs:element name="Serie" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Indica la serie de control respecto de la cual se emite el certificado.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1"/>
+                          <xs:maxLength value="3"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="NumeroCertificado" type="xs:string"/>
+                    <xs:element name="LugarExpedicion" type="xs:string"/>
+                    <xs:element name="FechaExpedicion" type="xs:date">
+                      <xs:annotation>
+                        <xs:documentation>Establece la fecha de emisión del certificado de conformidad con la sintaxis del esquema XSD considerando el formato de fecha YYYY-MM-DD</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DepositantePersonaFisica">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RFC" type="xs:string">
+                      <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes. Aunque en términos de la reforma este elemento es opcional, se considera que operativamente debe ser obligatorio considerando que es el mecanismo de relación que se podrá utilizar para su vínculo con el certificado digital asociado al tenedor del certificado</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{4}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                     </xs:element>
+                    <xs:element name="Curp" type="xs:string">
+                      <xs:annotation>Clave Única de Registro de Población. Este elemento es opcional condicionalmente con el RFC aunque se recomienda que se incluyan ambos datos</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:whiteSpace value="collapse"/>
+                          <xs:pattern value="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HMX](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Nombre" type="xs:string"/>
+                    <xs:element name="PrimerApellido" type="xs:string"/>
+                    <xs:element name="SegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="Direccion" minOccurs="0" maxOccurs="1" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Calle" type="xs:string"/>
+                          <xs:element name="NumExterior" type="xs:string"/>
+                          <xs:element name="NumInterior" type="xs:string" minOccurs="0" maxOccurs="1" />
+                          <xs:element name="Colonia" type="xs:string"/>
+                          <xs:element name="Estado" type="xs:string"/>
+                          <xs:element name="Municipio" type="xs:string"/>
+                          <xs:element name="CodigoPostal" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DepositantePersonaMorales">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RFC" type="xs:string">
+                      <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes de la Persona Moral.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{3}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                    <xs:element name="RazonSocial" type="xs:string"/>
+                    <xs:element name="Direccion" minOccurs="0" maxOccurs="1" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Calle" type="xs:string"/>
+                          <xs:element name="NumExterior" type="xs:string"/>
+                          <xs:element name="NumInterior" type="xs:string" minOccurs="0" maxOccurs="1" />
+                          <xs:element name="Colonia" type="xs:string"/>
+                          <xs:element name="Estado" type="xs:string"/>
+                          <xs:element name="Municipio" type="xs:string"/>
+                          <xs:element name="CodigoPostal" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RepresentanteLegal">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Rfc" type="xs:string" minOccurs="0" maxOccurs="1" >
+                            <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes. Aunque en términos de la reforma este elemento es opcional, se considera que operativamente debe ser obligatorio considerando que es el mecanismo de relación que se podrá utilizar para su vínculo con el certificado digital asociado al tenedor del certificado.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{4}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Curp" type="xs:string" >
+                            <xs:annotation>Clave Única de Registro de Población. Este elemento es opcional condicionalmente con el RFC aunque se recomienda que se incluyan ambos datos</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HMX](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Nombre" type="xs:string"/>
+                          <xs:element name="PrimerApellido" type="xs:string"/>
+                          <xs:element name="SegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DeclaracionDepositante" type="xs:string"/>
+              <xs:element name="BeneficiarioPersonaFisica">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RFC" type="xs:string">
+                      <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes. Aunque en términos de la reforma este elemento es opcional, se considera que operativamente debe ser obligatorio considerando que es el mecanismo de relación que se podrá utilizar para su vínculo con el certificado digital asociado al tenedor del certificado.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{4}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                    <xs:element name="Curp" type="xs:string" >
+                            <xs:annotation>Clave Única de Registro de Población. Este elemento es opcional condicionalmente con el RFC aunque se recomienda que se incluyan ambos datos</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HMX](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                    <xs:element name="Nombre" type="xs:string"/>
+                    <xs:element name="PrimerApellido" type="xs:string"/>
+                    <xs:element name="SegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="Direccion" minOccurs="0" maxOccurs="1" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Calle" type="xs:string"/>
+                          <xs:element name="NumExterior" type="xs:string"/>
+                          <xs:element name="NumInterior" type="xs:string" minOccurs="0" maxOccurs="1" />
+                          <xs:element name="Colonia" type="xs:string"/>
+                          <xs:element name="Estado" type="xs:string"/>
+                          <xs:element name="Municipio" type="xs:string"/>
+                          <xs:element name="CodigoPostal" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BeneficiarioPersonaMorales">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RFC" type="xs:string">
+                      <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes de la Persona Moral.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{3}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                    <xs:element name="RazonSocial" type="xs:string"/>
+                    <xs:element name="Direccion" minOccurs="0" maxOccurs="1" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Calle" type="xs:string"/>
+                          <xs:element name="NumExterior" type="xs:string"/>
+                          <xs:element name="NumInterior" type="xs:string" minOccurs="0" maxOccurs="1" />
+                          <xs:element name="Colonia" type="xs:string"/>
+                          <xs:element name="Estado" type="xs:string"/>
+                          <xs:element name="Municipio" type="xs:string"/>
+                          <xs:element name="CodigoPostal" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RepresentanteLegal">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Rfc" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>Registro Federal de Contribuyentes. Aunque en términos de la reforma este elemento es opcional, se considera que operativamente debe ser obligatorio considerando que es el mecanismo de relación que se podrá utilizar para su vínculo con el certificado digital asociado al tenedor del certificado.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="[A-ZÑ&]{4}[0-9]{2}(0[1-9]|1[0-2])([12][0-9]|0[1-9]|3[01])[A-Z0-9]{3}"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Curp" type="xs:string" >
+                            <xs:annotation>Clave Única de Registro de Población. Este elemento es opcional condicionalmente con el RFC aunque se recomienda que se incluyan ambos datos</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:whiteSpace value="collapse"/>
+                                <xs:pattern value="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HMX](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Nombre" type="xs:string"/>
+                          <xs:element name="PrimerApellido" type="xs:string"/>
+                          <xs:element name="SegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BodegaDeposito">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Codigo" type="xs:string"/>
+                    <xs:element name="TipoBodega" type="xs:string"/>
+                    <xs:element name="TipoContrato" type="xs:string"/>
+                    <xs:element name="EstatusMercancia" type="xs:string"/>
+                    <xs:element name="Direccion">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Calle" type="xs:string"/>
+                          <xs:element name="NumExterior" type="xs:string"/>
+                          <xs:element name="NumInterior" type="xs:string" minOccurs="0" maxOccurs="1" />
+                          <xs:element name="Colonia" type="xs:string"/>
+                          <xs:element name="Estado" type="xs:string"/>
+                          <xs:element name="Municipio" type="xs:string"/>
+                          <xs:element name="CodigoPostal" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Mercancias">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Mercancia">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Partida"/>
+                          <xs:element type="xs:string" name="IdProducto">
+                            <xs:annotation>
+                              <xs:documentation>Se refiere al identificador del producto del catálogo agro que este siendo utilizado por la almacenadora (Ej. SIAP, INEGI, Propio). La validación requerirá que dependiendo el tipo de depósito se señale el iDProducto o la fracción arancelaria</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="Fraccion">
+                            <xs:annotation>
+                              <xs:documentation>Fracción arancelaria bajo la cual se realiza la importación de la mercancía seleccionada. La validación requerirá que dependiendo el tipo de depósito se señale el iDProducto o la fracción arancelaria</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="Descripcion"/>
+                          <xs:element type="xs:string" name="Cantidad"/>
+                          <xs:element type="xs:string" name="UnidadMedida"/>
+                          <xs:element type="xs:string" name="PrecioUnitario"/>
+                          <xs:element type="xs:string" name="PrecioTotal"/>
+                          <xs:element type="xs:string" name="Origen">
+                            <xs:annotation>
+                              <xs:documentation>Origen hace referencia a los datos de identificación del producto que permitan identificar en que cosecha - zafra - lote tiene su origen la mercancía</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="ValorDeclarado">
+                            <xs:annotation>
+                              <xs:documentation>Valor de la mercancía que es declarado por el depositante </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="Calidad" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="Humedad" minOccurs="0" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="Danos" minOccurs="0" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="Impurezas" minOccurs="0" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="Quebrados" minOccurs="0" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="Otros" minOccurs="0" maxOccurs="1"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PolizaSeguro">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Contratante" type="xs:string"/>
+                    <xs:element name="Numero" type="xs:string"/>
+                    <xs:element name="Aseguradora" type="xs:string"/>
+                    <xs:element name="FechaContratacion" type="xs:string"/>
+                    <xs:element name="FechaVencimiento" type="xs:string"/>
+                    <xs:element name="Importe" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CuotasYTarifas">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TarifaMercanciaCertificada" type="xs:string"/>
+                    <xs:element name="TarifaAlmacenaje" type="xs:string"/>
+                    <xs:element name="ImpuestosPendientes" type="xs:string" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="CobroMinimo" type="xs:string"/>
+                    <xs:element name="DerechosPendientes" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ObservacionesAgd" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Observaciones adicionales que realiza el AGD respecto de la mercancía respaldada por el certificado o respecto del propio certificado</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element type="xs:string" name="TextoContrato">
+                <xs:annotation>
+                  <xs:documentation>Texto que establece las condiciones generales del contrato de almacenamiento que los AGD establecen. En el certificado de depósito físico estas condiciones se imprimían en el anverso del certificado</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:float"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

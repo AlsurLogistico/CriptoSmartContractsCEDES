@@ -1,0 +1,172 @@
+<CertificadoDeposito>
+	<EmisionCertificado version="0.1">
+
+		<AgdEmisor>
+			<RfcAgd></RfcAgd>
+			<Agd></Agd>
+			<RepresentanteLegalAgd>
+				<Rfc></Rfc>
+				<Nombre></Nombre>
+				<PrimerApellido></PrimerApellido>
+				<SegundoApellido></SegundoApellido>
+			</RepresentanteLegalAgd>
+		</AgdEmisor>
+
+		<IdentificacionCertificado>
+			<TituloDeCredito></TituloDeCredito>
+			<TipoCertificado></TipoCertificado>
+			<EstatusCertificado></EstatusCertificado>
+			<Folio></Folio>
+			<Serie></Serie>
+			<NumeroCertificado></NumeroCertificado>
+			<LugarExpedicion></LugarExpedicion>
+			<FechaExpedicion></FechaExpedicion>
+
+		</IdentificacionCertificado>
+
+		<DepositantePersonaFisica>
+			<RFC></RFC>
+			<CURP></CURP>
+			<Nombre></Nombre>
+			<PrimerApellido></PrimerApellido>
+			<SegundoApellido></SegundoApellido>
+			<Direccion>
+				<Calle></Calle>
+				<NumExterior></NumExterior>
+				<NumInterior></NumInterior>
+				<Colonia></Colonia>
+				<Estado></Estado>
+				<Municipio></Municipio>
+				<CodigoPostal></CodigoPostal>
+			</Direccion>
+		</DepositantePersonaFisica>
+		<DepositantePersonaMorales>
+			<RFC></RFC>
+			<RazonSocial></RazonSocial>
+			<Direccion>
+				<Calle></Calle>
+				<NumExterior></NumExterior>
+				<NumInterior></NumInterior>
+				<Colonia></Colonia>
+				<Estado></Estado>
+				<Municipio></Municipio>
+				<CodigoPostal></CodigoPostal>
+			</Direccion>
+			<RepresentanteLegal>
+				<Rfc></Rfc>
+				<Curp></Curp>
+				<Nombre></Nombre>
+				<PrimerApellido></PrimerApellido>
+				<SegundoApellido></SegundoApellido>
+			</RepresentanteLegal>
+		</DepositantePersonaMorales>
+
+		<DeclaracionDepositante></DeclaracionDepositante>
+
+		<BeneficiarioPersonaFisica>
+			<RFC></RFC>
+			<CURP></CURP>
+			<Nombre></Nombre>
+			<PrimerApellido></PrimerApellido>
+			<SegundoApellido></SegundoApellido>
+			<Direccion>
+				<Calle></Calle>
+				<NumExterior></NumExterior>
+				<NumInterior></NumInterior>
+				<Colonia></Colonia>
+				<Estado></Estado>
+				<Municipio></Municipio>
+				<CodigoPostal></CodigoPostal>
+			</Direccion>
+		</BeneficiarioPersonaFisica>
+		<BeneficiarioPersonaMorales>
+			<RFC></RFC>
+			<RazonSocial></RazonSocial>
+			<Direccion>
+				<Calle></Calle>
+				<NumExterior></NumExterior>
+				<NumInterior></NumInterior>
+				<Colonia></Colonia>
+				<Estado></Estado>
+				<Municipio></Municipio>
+				<CodigoPostal></CodigoPostal>
+			</Direccion>
+			<RepresentanteLegal>
+				<Rfc></Rfc>
+				<Curp></Curp>
+				<Nombre></Nombre>
+				<PrimerApellido></PrimerApellido>
+				<SegundoApellido></SegundoApellido>
+			</RepresentanteLegal>
+		</BeneficiarioPersonaMorales>
+
+		<BodegaDeposito>
+			<Codigo></Codigo>
+			<TipoBodega></TipoBodega>
+			<TipoContrato></TipoContrato>
+			<EstatusMercancia></EstatusMercancia>
+			<Direccion>
+				<Calle></Calle>
+				<NumExterior></NumExterior>
+				<NumInterior></NumInterior>
+				<Colonia></Colonia>
+				<Estado></Estado>
+				<Municipio></Municipio>
+				<CodigoPostal></CodigoPostal>
+			</Direccion>
+		</BodegaDeposito>
+		
+
+		<Mercancias>
+			<Mercancia>
+				<Partida></Partida>
+				<!--Se refiere al identificador del producto del catálogo agro que este siendo utilizado por la almacenadora (Ej. SIAP, INEGI, Propio). La validación requerirá que dependiendo el tipo de depósito se señale el iDProducto o la fracción arancelaria-->
+				<IdProducto></IdProducto>
+				<!--Fracción arancelaria bajo la cual se realiza la importación de la mercancía seleccionada. La validación requerirá que dependiendo el tipo de depósito se señale el iDProducto o la fracción arancelaria-->
+				<Fraccion></Fraccion>
+				<Descripcion></Descripcion>
+				<Cantidad></Cantidad>
+				<UnidadMedida></UnidadMedida>
+				<PrecioUnitario></PrecioUnitario>
+				<PrecioTotal></PrecioTotal>
+				<!--Origen hace referencia a los datos de identificación del producto que permitan identificar en que cosecha - zafra - lote tiene su origen la mercancía-->
+				<Origen></Origen>
+				<!--Valor de la mercancía que es declarado por el depositante -->
+				<ValorDeclarado></ValorDeclarado>
+				<Calidad>
+					<Humedad></Humedad>
+					<Danos></Danos>
+					<Impurezas></Impurezas>
+					<Quebrados></Quebrados>
+					<Otros></Otros>
+				</Calidad>
+			</Mercancia>
+
+		</Mercancias>
+
+		<PolizaSeguro>
+			<Contratante></Contratante>
+			<Numero></Numero>
+			<Aseguradora></Aseguradora>
+			<FechaContratacion></FechaContratacion>
+			<FechaVencimiento></FechaVencimiento>
+			<Importe></Importe>
+		</PolizaSeguro>
+
+		<CuotasYTarifas>
+			<TarifaMercanciaCertificada></TarifaMercanciaCertificada>
+			<TarifaAlmacenaje></TarifaAlmacenaje>
+			<ImpuestosPendientes></ImpuestosPendientes>
+			<CobroMinimo></CobroMinimo>
+			<DerechosPendientes></DerechosPendientes>
+		</CuotasYTarifas>
+
+		<ObservacionesAgd></ObservacionesAgd>
+
+		<!--Texto que establece las condiciones generales del contrato de almacenamiento que los AGD establecen. En el certificado de depósito físico estas condiciones se imprimían en el anverso del certificado-->
+		<TextoContrato></TextoContrato>
+
+	</EmisionCertificado>
+	
+
+</CertificadoDeposito>
