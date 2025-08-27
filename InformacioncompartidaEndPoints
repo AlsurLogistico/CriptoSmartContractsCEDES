@@ -1,0 +1,25 @@
+************************
+Información compartida EndPoints
+************************
+Hola David, buenos dias
+
+Te comparto la liga de los endpoints de QA donde puedes enviar los certificados y emitir salidas.
+
+Emisión de certificados
+
+QA: https://oqav7jg6dfv4e4kpi5lq5isqta.apigateway.mx-queretaro-1.oci.customer-oci.com/criptografico/cede/emitircertificado
+
+Obtener token
+QA:
+URL token https://idcs-17323e3d489d4111958c0a44d1f2619b.identity.oraclecloud.com:443//oauth2/v1/token
+Client_ID C5A9DABDBC0A4A86945F9DF3F5F9D838_APPID
+Client_Secret idcscs-d814b6ad-0681-4fba-a173-83c965375082
+Scope https://C5A9DABDBC0A4A86945F9DF3F5F9D838.integration.mx-queretaro-1.ocp.oraclecloud.com:443urn:opc:resource:consumer::all
+
+Salidas
+
+QA: https://oqav7jg6dfv4e4kpi5lq5isqta.apigateway.mx-queretaro-1.oci.customer-oci.com/criptografico/cede/aplicarsalidacertificado
+
+Para futuras ocasiones, es necesario consultar la página de DevOps, donde podrás encontrar las actualizaciones más recientes. Te comparto la liga
+
+https://login.microsoftonline.com/redeem?rd=https%3a%2f%2finvitations.microsoft.com%2fredeem%2f%3ftenant%3d6fae94e1-6e7b-4fec-9080-88e31475ffaa%26user%3d08834a53-78d9-4dc4-abb4-2effddf785ae%26ticket%3dfBGpa936x4%25252fexYDXz2VirtKRQE%25252b%25252bi%25252bDWLVEr9DenThg%25253d%26ver%3d2.0
