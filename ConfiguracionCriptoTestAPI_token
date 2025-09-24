@@ -1,1 +1,16 @@
+POST https://idcs-17323e3d489d4111958c0a44d1f2619b.identity.oraclecloud.com:443//oauth2/v1/token
+
+AUTHORIZATION
+Basic Auth
+Username:714B0079F95B44F48CB92D64158AF889_APPID
+idcscs-f6c72600-8dc2-45e8-b503-0e52eed58c07
+
+BODY
+grant_type:password
+usarname:ALSUR
+password:atjLxmGK2zWkvG84 [credencial de un solo uso]
+scope:https://714B0079F95B44F48CB92D64158AF889.integration.mx-queretaro-1.ocp.oraclecloud.com:443urn:opc:resource:consumer::all
+
+x-www-form-urlencoded
+
 
