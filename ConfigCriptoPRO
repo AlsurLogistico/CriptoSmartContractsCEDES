@@ -1,0 +1,14 @@
+POST https://jnn5oqbw2ievbieih34gm5grym.apigateway.mx-queretaro-1.oci.customer-oci.com/criptografico/cede/testing
+
+AUTHORIZATION
+Basic Auth
+Username:714B0079F95B44F48CB92D64158AF889_APPID
+idcscs-f6c72600-8dc2-45e8-b503-0e52eed58c07
+
+BODY
+grant_type:password
+usarname:ALSUR_PRD
+password:9)yRChkJ!FXW^Rzn [credencial de un solo uso]
+scope:https://714B0079F95B44F48CB92D64158AF889.integration.mx-queretaro-1.ocp.oraclecloud.com:443urn:opc:resource:consumer::all
+
+x-www-form-urlencoded
