@@ -1,0 +1,9 @@
+POST https://oqav7jg6dfv4e4kpi5lq5isqta.apigateway.mx-queretaro-1.oci.customer-oci.com/criptografico/cede/emitircertificado
+
+AUTHORIZATION
+Bearer Token: [Token solicitado por emision]
+
+BODY
+[el definido en la documentación]
+raw
+JSON
