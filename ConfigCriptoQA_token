@@ -1,5 +1,5 @@
 POST https://idcs-17323e3d489d4111958c0a44d1f2619b.identity.oraclecloud.com:443//oauth2/v1/token
-
+     
 AUTHORIZATION
 Basic Auth
 Username:C5A9DABDBC0A4A86945F9DF3F5F9D838_APPID
